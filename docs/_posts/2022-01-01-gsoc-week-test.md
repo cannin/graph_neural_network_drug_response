@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Test"
-tags: [gsoc]
+tags: [gsoc, report]
 author: Yoshitaka Inoue
 ---
 
