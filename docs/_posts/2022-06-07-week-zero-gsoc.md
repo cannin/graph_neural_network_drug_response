@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Week Zero | Welcome GSoC"
-tags: [gsoc, Weekly Report, Community Bonding]
+tags: [gsoc, report]
 author: Yoshitaka Inoue
 ---
 
