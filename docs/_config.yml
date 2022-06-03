@@ -1,4 +1,4 @@
-theme: jekyll-theme-leap-day
+theme: jekyll-theme-minimal
 title: GNN Based Drug Response Prediction GSoC 2022
 collections:
   reports:
