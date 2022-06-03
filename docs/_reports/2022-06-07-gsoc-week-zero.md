@@ -6,7 +6,7 @@ author: Yoshitaka Inoue
 ---
 
 ## About Me
-I am a PhD student at [University of Minneosota](https://twin-cities.umn.edu/), working with Dr. [Rui Kuang](https://www-users.cse.umn.edu/~kuang/). My research interests are machine learning, biological networks, drug discovery and graph theory.
+I am a PhD student at [University of Minnesota](https://twin-cities.umn.edu/), working with Dr. [Rui Kuang](https://www-users.cse.umn.edu/~kuang/). My research interests are machine learning, biological networks, drug discovery and graph theory.
 
 ## GSoC Project
 
