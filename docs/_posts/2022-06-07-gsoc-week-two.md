@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Week Zero | Welcome GSoC"
+tags: reports gsoc
 author: Yoshitaka Inoue
 ---
 
