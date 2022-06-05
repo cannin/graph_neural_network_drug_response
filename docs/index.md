@@ -2,7 +2,7 @@
 
 ### GSoC22 Reports
 <table>
-  {% for post in site.posts reversed %}
+  {% for post in site.reports reversed %}
     <tr>
       <td>{{ post.date | date: "%b %d, %y" }}</td>
       <td><a href="{{ post.url | remove_first:'/' }}">{{ post.title }}</a></td>
