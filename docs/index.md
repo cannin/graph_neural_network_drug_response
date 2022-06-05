@@ -3,7 +3,7 @@
 ### GSoC22 Reports
 <ul>
   {% for post in site.reports %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      <li><a href="{{ post.url | remove_first:'/' }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
 
