@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Test1"
+title:  Test1
 tags: gsoc
-author: Yoshitaka Inoue
+author: test1
 ---
 
 # Test1
