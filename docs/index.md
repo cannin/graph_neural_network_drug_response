@@ -2,10 +2,10 @@
 
 ### GSoC22 Reports
 <table>
-  {% for post in site.reports reversed %}
+  {% for post in site.posts reversed %}
     {% if post.tags contains "gsoc" %}
       <tr>
-        <td>{{post.date | date: "%b %d, %y"}}</td>
+        <td>{{ post.date | date: "%b %d, %y" }}</td>
         <td><a href="{{ post.url | remove_first:'/' }}">{{ post.title }}</a></td>
       </tr>
     {% endif %}
