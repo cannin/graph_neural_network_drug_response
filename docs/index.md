@@ -1,14 +1,15 @@
-
-
 ### GSoC22 Reports
-<ul>
-  {% for post in site.reports %}
-      <li><a href="{{ post.url | remove_first:'/' }}">{{ post.title }}</a></li>
+<table>
+  {% for post in site.reports reversed %}
+    <tr>
+      <td>FIXME</td>
+      <td><a href="{{ post.url | remove_first:'/' }}">{{ post.title }}</a></td>
+    </tr>
   {% endfor %}
-</ul>
+</table>
 
 
-### Contributers
+### Contributors
 <ul>
   {% for member in site.data.contributors %}
       <li>
