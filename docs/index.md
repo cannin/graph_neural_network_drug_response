@@ -2,7 +2,7 @@
 <table>
   {% for post in site.reports reversed %}
     <tr>
-      <td>FIXME</td>
+      <td>{{ post.date | date_to_string }}</td>
       <td><a href="{{ post.url | remove_first:'/' }}">{{ post.title }}</a></td>
     </tr>
   {% endfor %}
