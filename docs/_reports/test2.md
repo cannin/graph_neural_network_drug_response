@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  Test2
+title:  "Week Two | FIXME"
 tags: gsoc
-author: test2
+author: Yoshitaka Inoue
 ---
 
-# Test2
-Test2
+# FIXME
+FIXME
