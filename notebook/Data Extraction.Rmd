@@ -1,0 +1,35 @@
+---
+title: "Data Extraction"
+output: html_document
+date: '2022-06-17'
+---
+
+```{r setup, include=FALSE}
+library(rcellminer)
+library(rcellminerData)
+```
+
+```{r}
+drugAnnot <- getFeatureAnnot(rcellminerData::drugData)[["drug"]]['PUBCHEM_ID']
+head(drugAnnot)
+```
+
+```{r}
+write.csv(
+    drugAnnot,
+    file = '../DrugCell/data/pubchem_id_by_nsc.csv',
+)
+```
+
+```{r}
+nci60Act <- exprs(getAct(drugData))
+head(nci60Act)
+```
+
+```{r}
+write.csv(
+    nci60Act,
+    file = '../DrugCell/data/nci60Act.csv',
+)
+```
+
