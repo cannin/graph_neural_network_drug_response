@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Week One | FIXME"
+title:  "Week two | retrain model"
 tags: gsoc
 author: Yoshitaka Inoue
 ---
