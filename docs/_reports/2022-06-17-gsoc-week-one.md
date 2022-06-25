@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Week One | FIXME"
+title:  "Week One | Explore data"
 tags: gsoc
 author: Yoshitaka Inoue
 ---
