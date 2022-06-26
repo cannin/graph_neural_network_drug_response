@@ -14,7 +14,9 @@ RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
-    
+
+RUN pwd
+
 COPY . ../notebook 
 WORKDIR ../notebook/notebook
 USER ${USER}
