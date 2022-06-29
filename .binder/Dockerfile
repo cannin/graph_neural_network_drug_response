@@ -18,5 +18,7 @@ RUN adduser --disabled-password \
 RUN pwd
 
 COPY . ../notebook 
-WORKDIR ../notebook/notebook
+COPY . ../DrugCell
+COPY . ../data
+WORKDIR ../notebook
 USER ${USER}
