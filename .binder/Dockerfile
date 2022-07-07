@@ -1,7 +1,7 @@
 FROM rpy2/base-ubuntu:master-21.10
 
 RUN pip install --no-cache --upgrade pip && \
-    pip install --no-cache notebook torch networkx pandas numpy requests && \
+    pip install --no-cache notebook torch networkx pandas numpy && \
     R -e "install.packages('BiocManager')" && \
     R -e "BiocManager::install('rcellminer')"
   
@@ -17,7 +17,5 @@ RUN adduser --disabled-password \
 
 COPY --chown=${USER} . ../notebook 
 COPY --chown=${USER} . ../data
-COPY --chown=${USER} . ../Hidden_sample
-COPY --chown=${USER} . ../Result_sample 
 WORKDIR notebook
 USER ${USER}
