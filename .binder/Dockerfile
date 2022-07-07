@@ -21,5 +21,5 @@ COPY --chown=${USER} . ../DrugCell
 COPY --chown=${USER} . ../data
 COPY --chown=${USER} . ../Hidden_sample
 COPY --chown=${USER} . ../Result_sample 
-WORKDIR notebook
+WORKDIR ../notebook
 USER ${USER}
