@@ -17,4 +17,6 @@ RUN adduser --disabled-password \
 
 COPY --chown=${USER} . ../notebook 
 COPY --chown=${USER} . ../data
+COPY --chown=${USER} . ../DrugCell
+WORKDIR ./notebook 
 USER ${USER}
