@@ -1,7 +1,8 @@
-FROM rpy2/base-ubuntu:master-22.04
+FROM rpy2/base-ubuntu:master-20.04
 
-RUN pip install --no-cache --upgrade pip && \
-    pip install --no-cache notebook torch networkx pandas numpy && \
+RUN apt-get update && apt-get install -y && rm -rf /var/lib/apt/lists/* && \
+    pip install --no-cache --upgrade pip && \
+    pip install --no-cache notebook torch networkx pandas numpy requests && \
     R -e "install.packages('BiocManager')" && \
     R -e "BiocManager::install('rcellminer')" 
     
@@ -15,10 +16,10 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 
-RUN pwd
-
-COPY . ../notebook 
-COPY . ../DrugCell
-COPY . ../data
-WORKDIR ../notebook
+COPY --chown=${USER} . ../notebook 
+COPY --chown=${USER} . ../DrugCell
+COPY --chown=${USER} . ../data
+COPY --chown=${USER} . ../Hidden_sample
+COPY --chown=${USER} . ../Result_sample 
+WORKDIR notebook
 USER ${USER}
