@@ -1,6 +1,5 @@
 FROM rpy2/base-ubuntu:master-22.04
 
-# RUN apt-get update && apt-get install -y && rm -rf /var/lib/apt/lists/* && \
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook torch networkx pandas numpy requests && \
     R -e "install.packages('BiocManager')" && \
