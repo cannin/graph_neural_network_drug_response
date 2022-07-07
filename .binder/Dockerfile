@@ -1,6 +1,6 @@
-FROM rpy2/base-ubuntu:master-20.04
+FROM rpy2/base-ubuntu:master-22.04
 
-RUN apt-get update && apt-get install -y && rm -rf /var/lib/apt/lists/* && \
+RUN sudo apt-get update && sudo apt-get install -y && sudo rm -rf /var/lib/apt/lists/* && \
     R -e "install.packages('BiocManager')" && \
     R -e "BiocManager::install('rcellminer')" && \
     pip install --no-cache --upgrade pip && \
