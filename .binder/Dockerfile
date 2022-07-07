@@ -17,5 +17,4 @@ RUN adduser --disabled-password \
 
 COPY --chown=${USER} . ../notebook 
 COPY --chown=${USER} . ../data
-WORKDIR notebook
 USER ${USER}
