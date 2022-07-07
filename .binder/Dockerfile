@@ -22,5 +22,5 @@ COPY --chown=${USER} . ../data
 COPY --chown=${USER} . ../Hidden_sample
 COPY --chown=${USER} . ../Result_sample 
 RUN ls
-WORKDIR ../notebook
+WORKDIR notebook
 USER ${USER}
