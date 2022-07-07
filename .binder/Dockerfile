@@ -1,4 +1,4 @@
-FROM rpy2/base-ubuntu:master-22.04
+FROM rpy2/base-ubuntu:master-21.10
 
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook torch networkx pandas numpy requests && \
