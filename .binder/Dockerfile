@@ -1,7 +1,22 @@
-FROM rocker/binder:4.2.0
+FROM rpy2/base-ubuntu:master-21.10
 
-# Copy your repository contents to the image
-COPY --chown=rstudio:rstudio . ${HOME}
+RUN pip install --no-cache --upgrade pip && \
+    pip install --no-cache notebook torch networkx pandas numpy && \
+    R -e "install.packages('BiocManager')" && \
+    R -e "BiocManager::install('rcellminer')"
+  
+# create user with a home directory
+ARG NB_USER
+ARG NB_UID
+ENV USER ${NB_USER}
 
-RUN if [ -f install.R ]; then R --quiet -f install.R; fi && \
-    pip install --user numpy pandas torch networkx
+RUN adduser --disabled-password \
+    --gecos "Default user" \
+    --uid ${NB_UID} \
+    ${NB_USER}
+
+COPY --chown=${USER} . ../notebook 
+COPY --chown=${USER} . ../data
+COPY --chown=${USER} . ../DrugCell
+WORKDIR ./notebook 
+USER ${USER}
