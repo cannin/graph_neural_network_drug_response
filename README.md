@@ -78,3 +78,13 @@ This requires these files:
 - output directories
   - ./Hidden : directory for final hidden layers' weights 
   - ./Result : directory for each GO's correlation
+
+### 5. (Optional) Hyper parameter tuning
+
+```console
+python ./DrugCell/data/hyperparameter_tuning.py
+```
+
+This doesn't require anything but you can set any parameter if you want like "-test ../data/rcellminer_test.txt".
+This will return csv file which summarize loss and parameters.
+From this result, you can decide hyperparameters.
