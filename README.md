@@ -46,7 +46,8 @@ This requires these files:
 
 ### 4. Run DrugCell model
 
-[notebook](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/Run%20DrugCell%20Model%20on%20CellMinerCDB%20Data.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cannin/graph_neural_network_drug_response/blob/main/notebook/Run_DrugCell_Model_for_CellMinerCDB_Data.ipynb)
+
 
 ```console
 git clone git@github.com:inoue0426/DrugCell.git
