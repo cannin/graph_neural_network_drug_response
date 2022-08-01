@@ -83,7 +83,7 @@ This requires these files:
 ### 5. (Optional) Hyper parameter tuning
 
 ```console
-python ./DrugCell/data/hyperparameter_tuning.py
+python ./DrugCell/code/hyperparameter_tuning.py
 ```
 
 This does not require anything but you can set any parameter like -test ../data/rcellminer_test.txt.
