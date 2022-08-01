@@ -2,7 +2,7 @@
 
 This is a set of scripts to get data from rcellminer, convert the data for DrugCell, run DrugCell, and get the results.
 
-## procedure
+## Procedure
 
 ### 1. Extraction data using rcellminer.
 
