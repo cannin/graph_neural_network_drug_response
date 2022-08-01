@@ -86,6 +86,6 @@ This requires these files:
 python ./DrugCell/data/hyperparameter_tuning.py
 ```
 
-This doesn't require anything but you can set any parameter if you want like ```-test ../data/rcellminer_test.txt``` .  
-This will return csv file which summarize loss and parameters.    
-From this result, you can decide hyperparameters.
+This does not require anything but you can set any parameter like -test ../data/rcellminer_test.txt.
+This will return a CSV file that summarizes loss and parameters.
+From this result, you can decide on hyperparameters.
