@@ -81,9 +81,7 @@ def get_weight(sample_index, hidden_data_path, go):
     )
 
     if X.shape[1] == 1:
-        GO_terms = get_single_hidden_layer(
-            hidden, hidden_data_path, sample_index
-        )
+        GO_terms = get_single_hidden_layer(hidden, hidden_data_path, sample_index)
     else:
         GO_terms = get_pca(hidden, hidden_data_path, sample_index)
 
@@ -95,8 +93,7 @@ def get_weight(sample_index, hidden_data_path, go):
 
     print("Start to calculate the weight of each gene.")
     t = Parallel(n_jobs=-1)(
-        delayed(get_weight_parallel)(gene, G, GO_terms)
-        for gene in tqdm(list(genes))
+        delayed(get_weight_parallel)(gene, G, GO_terms) for gene in tqdm(list(genes))
     )
     t = pd.DataFrame(t)
     t.index = list(t[0])
