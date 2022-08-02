@@ -14,7 +14,8 @@ R version: 4.1.3
 - networkx 
 - pandas 
 - numpy 
-- scipy 
+- scipy
+- scikit-learn
 - rdkit-pypi 
 - optuna
 
