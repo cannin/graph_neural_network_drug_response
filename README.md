@@ -103,7 +103,45 @@ This requires these files:
   - ./Hidden : directory for final hidden layers' weights 
   - ./Result : directory for each GO's correlation
 
-### 5. (Optional) Hyper parameter tuning
+
+### 5. Visualization using Cytoscape and PCA
+
+```console
+<!-- get PCA result -->
+python get_pca_result.py  DrugCell/data/rcellminer_test.txt /PATH/To/Hidden/
+<!-- get graph structure -->
+python get_graph_structure.py SAMPLE_INDEX /PATH/To/Hidden/ DrugCell/data/drugcell_ont.txt
+```
+
+This is the script to get visualizatian and graph structure.
+This requires these files:
+- from DrugCell repository
+  - DrugCell/data/drugcell_ont.txt : ontology relationships data
+- from this repository
+  - ../data/rcellminer_test.txt : test data 
+- from DrugCell prediction output
+  - /PATH/To/Hidden/ : directory for final hidden layers' weights 
+- from user's focus
+  - SAMPLE_INDEX : this is the indexes to samples in test data which user focus on. (Ex. "100,200")
+
+When you run the get_pca_result.py, this concatenates all GO:XXXXXX.hidden for each sample and then runs PCA.
+So if you run it, you can get a figure as below. Coloring is based on drug response.
+
+
+![pca_result](https://user-images.githubusercontent.com/8393063/182660161-41039436-131a-4a94-bd3f-ac48381f4278.png)
+
+
+When you run the get_graph_structure.py, you can get graph.csv and weight.csv.   
+This requires sample indexes like "100,200,300". This means that from the test data, this code picks up sample indexes 100, 200, and 300 and then calculates the weight of each sample.
+Concretely, we first construct a graph structure based on Gene Ontology. The data contains GO and gene information and is saved as graph.csv.
+Next, this obtains weights for each sample from the hidden layer. For example, for three samples of 100, 200, and 300, we obtain weights for 2068 nodes (GOs).
+Here, since the weights of the genes are not included in the hidden layer, we need to calculate them somehow. To do this, this code first enumerates all the ways to GO:0008150 from each gene. Then add up all the weights of each Gene Ontology we pass when going to GO:0008150, which we defined as the weight for each gene.
+
+The following is a visualization using Cytoscape.
+
+![Screen Shot 2022-07-24 at 12 56 20](https://user-images.githubusercontent.com/8393063/182660299-e9c755f1-31c7-4b91-a38e-8a853f7ef712.png)
+
+### 6. (Optional) Hyper parameter tuning
 
 ```console
 python ./DrugCell/code/hyperparameter_tuning.py
@@ -112,3 +150,4 @@ python ./DrugCell/code/hyperparameter_tuning.py
 This does not require anything but you can set any parameter like -test ../data/rcellminer_test.txt.
 This will return a CSV file that summarizes loss and parameters.
 From this result, you can decide on hyperparameters.
+
