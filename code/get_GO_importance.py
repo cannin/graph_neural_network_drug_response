@@ -52,9 +52,7 @@ def get_importance(
     hidden = [i for i in hidden if "GO" in i]
 
     GO_terms = get_pca(hidden, hidden_data_path)
-    pubchem = pd.read_csv(
-        SMILES_PubchemID_table_data_path, header=None, sep="\t"
-    )
+    pubchem = pd.read_csv(SMILES_PubchemID_table_data_path, header=None, sep="\t")
 
     test = pd.read_csv(test, header=None, sep="\t")
 
@@ -64,13 +62,13 @@ def get_importance(
     tmp_pos = tmp[tmp[2] > 0]
     tmp_neg = tmp[tmp[2] < 0]
 
-    tmp_pos = pd.DataFrame(
-        np.sum(GO_terms.loc[list(tmp_pos.index)])
-    ).sort_values(0, ascending=False)
+    tmp_pos = pd.DataFrame(np.sum(GO_terms.loc[list(tmp_pos.index)])).sort_values(
+        0, ascending=False
+    )
 
-    tmp_neg = pd.DataFrame(
-        np.sum(GO_terms.loc[list(tmp_neg.index)])
-    ).sort_values(0, ascending=False)
+    tmp_neg = pd.DataFrame(np.sum(GO_terms.loc[list(tmp_neg.index)])).sort_values(
+        0, ascending=False
+    )
 
     tmp_pos.to_csv("importance_for_pos_{}.csv".format(pubchem_id))
     tmp_neg.to_csv("importance_for_neg_{}.csv".format(pubchem_id))
