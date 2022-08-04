@@ -4,10 +4,10 @@ This is a set of scripts to get data from rcellminer, convert the data for DrugC
 
 ## Computational environment
 
-Ubuntu version: 20.04.4 LTS
-GPU spec: GeForce RTX 3080
-Python version: 3.9.5  
-R version: 4.1.3
+Ubuntu version: 20.04.4 LTS  
+GPU spec: GeForce RTX 3080    
+Python version: 3.9.5    
+R version: 4.1.3   
 
 ### python requirement
 - torch 
@@ -17,7 +17,7 @@ R version: 4.1.3
 - scipy
 - scikit-learn
 - rdkit-pypi 
-- optuna
+- (optional) optuna
 
 ### R requirement
 - BiocManager
