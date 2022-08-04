@@ -141,7 +141,29 @@ The following is a visualization using Cytoscape.
 
 ![Screen Shot 2022-07-24 at 12 56 20](https://user-images.githubusercontent.com/8393063/182660299-e9c755f1-31c7-4b91-a38e-8a853f7ef712.png)
 
-### 6. (Optional) Hyper parameter tuning
+### 6. Identification of subsystems important using RLIPP
+
+```console
+
+git clone https://github.com/aksinghal5590/rlipp.git
+cd rlipp
+sh  scripts/rlipp.sh 
+```
+
+This is the method that is officially used in the DrugCell paper.  
+You need to modify scripts/rlipp.sh to adjust to your environment.
+
+In this script, ridge regression is performed based on the results of the hidden layer of each GO to produce correlations. By comparing this correlation with the correlation of the parent, RLIPP is computed. Positive RLIPP indicates higher predictive power than children, while negative values indicate low predictive power.       
+  
+  
+  
+$$
+\text{RLIPP score} = \left(\rho_{2}-\rho_{1}\right) / \rho_{1},
+$$
+
+where $\rho_{1}$ is children's correlation and $\rho_{2}$ is parent's correlation.
+
+### 7. (Optional) Hyper parameter tuning
 
 ```console
 python ./DrugCell/code/hyperparameter_tuning.py
