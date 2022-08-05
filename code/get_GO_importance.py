@@ -1,22 +1,22 @@
 import sys
-import warnings
+import pandas as pd
+import numpy as np
+import networkx as nx
+import matplotlib.pyplot as plt
+
 from os import listdir
 from os.path import exists
-
-import matplotlib.pyplot as plt
-import networkx as nx
-import numpy as np
-import pandas as pd
+from tqdm import tqdm
 from joblib import Parallel, delayed
 from sklearn.decomposition import PCA
-from tqdm import tqdm
+
+import warnings
 
 warnings.filterwarnings("ignore")
 
-
 def get_pca(hidden, hidden_data_path):
     pca = pd.DataFrame()
-
+    
     print("Start to calculate the PCA of each hidden layer.")
     for i in tqdm(hidden):
         X = pd.read_csv(
@@ -26,52 +26,87 @@ def get_pca(hidden, hidden_data_path):
         )
 
         X_pca = PCA(n_components=1).fit_transform(X)
-        pca = pd.concat([pca, pd.DataFrame(X_pca)], axis=1)
+        pca = pd.concat([
+            pca, 
+            pd.DataFrame(X_pca)
+        ], axis=1)
 
-    pca.columns = [i.split(".")[0] for i in hidden]
+    pca.columns = [i.split('.')[0] for i in hidden]
 
     return pca
 
 
 def get_figure(tmp_pos, tmp_neg, pubchem_id):
-    plt.bar(list(tmp_pos.index), tmp_pos[0])
+    plt.bar(
+        list(tmp_pos.index)[:10],
+        tmp_pos[0][:10]
+    )
     plt.xticks(rotation=45)
+    plt.savefig('./pos_top10_{}.png'.format(pubchem_id))
     plt.show()
-    plt.savefig("./pos_{}.png".format(pubchem_id))
-
-    plt.bar(list(tmp_neg.index), tmp_neg[0])
+    
+    plt.bar(
+        list(tmp_pos.index)[-10:],
+        tmp_pos[0][-10:]
+    )
     plt.xticks(rotation=45)
+    plt.savefig('./pos_worst10_{}.png'.format(pubchem_id))
     plt.show()
-    plt.savefig("./neg_{}.png".format(pubchem_id))
 
+    plt.bar(
+        list(tmp_neg.index)[:10],
+        tmp_neg[0][:10]
+    )
+    plt.xticks(rotation=45)
+    plt.savefig('./neg_top10_{}.png'.format(pubchem_id))
+    plt.show()
+    
+    plt.bar(
+        list(tmp_neg.index)[-10:],
+        tmp_neg[0][-10:]
+    )
+    plt.xticks(rotation=45)
+    plt.savefig('./neg_worst10_{}.png'.format(pubchem_id))
+    plt.show()
 
 def get_importance(
-    hidden_data_path, test, SMILES_PubchemID_table_data_path, pubchem_id
-):
+        hidden_data_path, 
+        test, 
+        SMILES_PubchemID_table_data_path,
+        pubchem_id
+    ):
     hidden = listdir(hidden_data_path)
     hidden = [i for i in hidden if "GO" in i]
-
+    
     GO_terms = get_pca(hidden, hidden_data_path)
-    pubchem = pd.read_csv(SMILES_PubchemID_table_data_path, header=None, sep="\t")
-
-    test = pd.read_csv(test, header=None, sep="\t")
-
+    pubchem = pd.read_csv(
+        SMILES_PubchemID_table_data_path,
+        header=None,
+        sep='\t'
+    )
+    
+    test = pd.read_csv(
+        test,
+        header=None,
+        sep='\t'
+    )
+    
     tmp = pubchem[pubchem[0] == pubchem_id]
     tmp = test[test[1] == tmp[1].values[0]]
+    
+    tmp_pos = tmp[tmp[2] > 0] 
+    tmp_neg = tmp[tmp[2] < 0] 
 
-    tmp_pos = tmp[tmp[2] > 0]
-    tmp_neg = tmp[tmp[2] < 0]
-
-    tmp_pos = pd.DataFrame(np.sum(GO_terms.loc[list(tmp_pos.index)])).sort_values(
-        0, ascending=False
-    )
-
-    tmp_neg = pd.DataFrame(np.sum(GO_terms.loc[list(tmp_neg.index)])).sort_values(
-        0, ascending=False
-    )
-
-    tmp_pos.to_csv("importance_for_pos_{}.csv".format(pubchem_id))
-    tmp_neg.to_csv("importance_for_neg_{}.csv".format(pubchem_id))
+    tmp_pos= pd.DataFrame(
+        np.sum(GO_terms.loc[list(tmp_pos.index)])
+    ).sort_values(0, ascending=False)
+     
+    tmp_neg = pd.DataFrame(
+        np.sum(GO_terms.loc[list(tmp_neg.index)])
+    ).sort_values(0, ascending=False)
+    
+    tmp_pos.to_csv('importance_for_pos_{}.csv'.format(pubchem_id))
+    tmp_neg.to_csv('importance_for_neg_{}.csv'.format(pubchem_id))
 
     get_figure(tmp_pos, tmp_neg, pubchem_id)
 
