@@ -9,7 +9,7 @@ GPU spec: GeForce RTX 3080
 Python version: 3.9.5    
 R version: 4.1.3   
 
-### python requirement
+### Python requirement
 - torch 
 - networkx 
 - pandas 
