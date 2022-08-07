@@ -7,7 +7,7 @@ import pandas as pd
 def extractTestData(SMILES, nci60PubChemID, nci60Act_ccle):
 
     # Read original train data
-    train = pd.read_table("../data/drugcell_train.txt", header=None)
+    train = pd.read_table("./data/drugcell_train.txt", header=None)
 
     # Get SMILES from PubChem ID  https://pubchem.ncbi.nlm.nih.gov/idexchange/idexchange.cgi
     smiles = pd.read_table(SMILES, header=None).drop(0, axis=1)
