@@ -2,29 +2,6 @@
 
 This is a set of scripts to get data from rcellminer, convert the data for DrugCell, run DrugCell, and get the results.
 
-## Computational environment
-
-Ubuntu version: 20.04.4 LTS  
-GPU spec: GeForce RTX 3080    
-Python version: 3.9.5    
-R version: 4.1.3   
-
-### Python requirement
-- torch 
-- networkx 
-- pandas 
-- numpy 
-- scipy
-- scikit-learn
-- rdkit-pypi 
-- (optional) optuna
-
-### R requirement
-- BiocManager
-- rcellminer
-
-*** You can also check [dockerfile](https://github.com/cannin/graph_neural_network_drug_response/blob/main/Dockerfile)
-
 ## Procedure
 
 ### 1. Extraction data using rcellminer.
