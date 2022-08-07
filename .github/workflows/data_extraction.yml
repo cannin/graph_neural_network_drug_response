@@ -33,4 +33,4 @@ jobs:
       - run: |
           Rscript code/data_extraction.r
           python code/nci60_to_ccle.py data/nci60Act.csv
-          python code/testdata_extraction.py data/PubChemIDToSmiles.csv data/PubChemID.csv data/nci60Act_ccle.csv
+          python code/testdata_extraction.py data/PubChemIDToSmiles.txt data/PubChemID.csv data/nci60Act_ccle.csv
