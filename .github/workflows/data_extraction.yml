@@ -39,4 +39,9 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           path: |
-            data/*
+            data/nci60PubChemID.csv
+            data/PubChemID.csv
+            data/nci60Act.csv
+            data/nci60Act_ccle.csv
+            data/rcellminer_test.txt
+            
