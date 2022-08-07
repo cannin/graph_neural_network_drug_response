@@ -32,10 +32,12 @@ jobs:
 #           R -e 'BiocManager::install("rcellminer")'
           
       - run: |
+            python code/testdata_extraction.py data/PubChemIDToSmiles.txt data/PubChemID.csv data/nci60Act_ccle.csv
+            ls
 #          Rscript code/data_extraction.r
 #          python code/nci60_to_ccle.py data/nci60Act.csv
-          python code/testdata_extraction.py data/PubChemIDToSmiles.txt data/PubChemID.csv data/nci60Act_ccle.csv
-          ls
+#          python code/testdata_extraction.py data/PubChemIDToSmiles.txt data/PubChemID.csv data/nci60Act_ccle.csv
+#          ls
 #       - uses: actions/upload-artifact@v3
 #         with:
 #           path: ./data/nci60PubChemID.csv
