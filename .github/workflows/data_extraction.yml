@@ -34,3 +34,10 @@ jobs:
           Rscript code/data_extraction.r
           python code/nci60_to_ccle.py data/nci60Act.csv
           python code/testdata_extraction.py data/PubChemIDToSmiles.txt data/PubChemID.csv data/nci60Act_ccle.csv
+      - uses: actions/upload-artifact@v3
+        with:
+          path: ./data/nci60PubChemID.csv
+          path: ./data/PubChemID.csv
+          path: ./data/nci60Act.csv
+          path: data/nci60Act_ccle.csv
+          path: ./data/rcellminer_test.txt
