@@ -5,7 +5,7 @@ This is a set of scripts to get data from rcellminer, convert the data for DrugC
 ## Procedure
 
 \* Step 1-3 are automatically running by GitHub actions. You can use each scripts if you want to run manually.   
-\* You can get artifact from [here](https://github.com/cannin/graph_neural_network_drug_response/actions/workflows/data_extraction.yml).
+\* You can get the artifact from [here](https://github.com/cannin/graph_neural_network_drug_response/actions/workflows/data_extraction.yml).
 
 ### 1. Extraction data using rcellminer.
 
