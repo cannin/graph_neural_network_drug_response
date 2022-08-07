@@ -49,7 +49,7 @@ def get_ccle_dataframe(file_name):
     nci60Act.columns = col
 
     # Read table of cell line names
-    sanger_cell_lines = pd.read_csv("../data/sanger_to_ccle.csv", index_col=0)
+    sanger_cell_lines = pd.read_csv("./data/sanger_to_ccle.csv", index_col=0)
 
     # Create a dictionary of the cell line names
     ccle_dict = {
