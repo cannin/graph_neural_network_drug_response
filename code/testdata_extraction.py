@@ -13,7 +13,7 @@ def extractTestData(SMILES, nci60PubChemID, nci60Act_ccle):
     smiles = pd.read_table(SMILES, header=None).drop(0, axis=1)
 
     # Replace index with Drug ID
-    smiles.index = pd.read_csv(nci60PubChemID, index_col=0).index
+    smiles.index = pd.read_csv(nci60PubChemID, index_col=0, header=None).index
     smiles.columns = ["SMILES"]
 
     # Check if the SMILES are in the train data
