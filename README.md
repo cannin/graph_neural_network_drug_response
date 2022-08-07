@@ -63,6 +63,7 @@ This requires these files:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cannin/graph_neural_network_drug_response/blob/main/notebook/Run_DrugCell_Model_for_CellMinerCDB_Data.ipynb)
 
+<details>
 
 ```console
 git clone git@github.com:inoue0426/DrugCell.git
@@ -95,8 +96,11 @@ This requires these files:
   - ./Hidden : directory for final hidden layers' weights 
   - ./Result : directory for each GO's correlation
 
+</details>
 
 ### 5. Visualization using Cytoscape and PCA
+
+<details>
 
 ```console
 <!-- get PCA result -->
@@ -133,10 +137,13 @@ The following is a visualization using Cytoscape.
 
 ![Screen Shot 2022-07-24 at 12 56 20](https://user-images.githubusercontent.com/8393063/182660299-e9c755f1-31c7-4b91-a38e-8a853f7ef712.png)
 
+</details>
+
 ### 6. Identification of subsystems important using RLIPP
 
-```console
+<details>
 
+```console
 git clone https://github.com/aksinghal5590/rlipp.git
 cd rlipp
 sh  scripts/rlipp.sh 
@@ -155,7 +162,11 @@ $$
 
 where $\rho_{1}$ is children's correlation and $\rho_{2}$ is parent's correlation.
 
+</details>
+
 ### 7. (Optional) Hyper parameter tuning
+
+<details>
 
 ```console
 python ./DrugCell/code/hyperparameter_tuning.py
@@ -165,3 +176,4 @@ This does not require anything but you can set any parameter like -test ../data/
 This will return a CSV file that summarizes loss and parameters.
 From this result, you can decide on hyperparameters.
 
+</details>
