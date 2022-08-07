@@ -42,7 +42,7 @@ def extractTestData(SMILES, nci60PubChemID, nci60Act_ccle):
     test = test[["Cell Line", "SMILES", "Drug Response"]]
     test = test.reset_index(drop=True)
 
-    test.to_csv("../data/rcellminer_test.txt", sep="\t", header=None, index=None)
+    test.to_csv("./data/rcellminer_test.txt", sep="\t", header=None, index=None)
 
 
 if __name__ == "__main__":
