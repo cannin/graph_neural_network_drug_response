@@ -4,7 +4,11 @@ This is a set of scripts to get data from rcellminer, convert the data for DrugC
 
 ## Procedure
 
+* Step 1-3 are done by GitHub actions. You can use each scripts if you run manually.
+
 ### 1. Extraction data using rcellminer.
+
+<details>
 
 ```console
 Rscript code/data_extraction.r
@@ -20,8 +24,12 @@ You can modify here to get any data what you want.
 ```R
 nci60Act <- exprs(getAct(drugData))
 ```
+</details>
+
 
 ### 2. Replace Cell Line name from nci60 to CCLE
+
+<details>
 
 ```console
 python nci60_to_ccle.py ../data/nci60Act.csv
@@ -29,7 +37,11 @@ python nci60_to_ccle.py ../data/nci60Act.csv
 
 This is a script that replaces the nci60 Cell Line name with the CCLE one.
 
+</details>
+
 ### 3. Test data extraction
+
+<details>
 
 ```console
 python testdata_extraction.py ../data/PubChemIDToSmiles.csv ../data/PubChemID.csv ../data/nci60Act_ccle.csv
@@ -43,6 +55,8 @@ This requires these files:
 - ../data/PubChemID.csv 
 - ../data/nci60Act_ccle.csv
   - These files are from step 1.
+
+</details>
 
 ### 4. Run DrugCell model
 
