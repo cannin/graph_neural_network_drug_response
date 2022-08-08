@@ -96,6 +96,10 @@ This requires these files:
 
 ### 5. Visualization using Cytoscape and PCA
 
+- [get_pca_result.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_pca_result.ipynb)
+- [get_graph_structure.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_graph_structure.ipynb)
+- [get_GO_importance.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_GO_importance.ipynb)
+
 ```console
 <!-- get PCA result -->
 python code/get_pca_result.py  DrugCell/data/rcellminer_test.txt /PATH/To/Hidden/
