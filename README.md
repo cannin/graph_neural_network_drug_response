@@ -98,9 +98,11 @@ This requires these files:
 
 ```console
 <!-- get PCA result -->
-python get_pca_result.py  DrugCell/data/rcellminer_test.txt /PATH/To/Hidden/
+python code/get_pca_result.py  DrugCell/data/rcellminer_test.txt /PATH/To/Hidden/
 <!-- get graph structure -->
-python get_graph_structure.py SAMPLE_INDEX /PATH/To/Hidden/ DrugCell/data/drugcell_ont.txt
+python code/get_graph_structure.py SAMPLE_INDEX /PATH/To/Hidden/ DrugCell/data/drugcell_ont.txt
+<!-- get GO importance using PCA -->
+python code/get_GO_importance.py /PATH/To/Hidden/ ./DrugCell/data/test_rcell_over50_not_equal.txt ./DrugCell/data/SMILES_from_PubchemID.txt PUBCHEM_ID
 ```
 
 This is the script to get visualizatian and graph structure.
@@ -131,6 +133,24 @@ The following is a visualization using Cytoscape.
 
 ![Screen Shot 2022-07-24 at 12 56 20](https://user-images.githubusercontent.com/8393063/182660299-e9c755f1-31c7-4b91-a38e-8a853f7ef712.png)
 
+When you run get_GO_importance, you can get importance_for_pos_DRUG_INDEX.csv and importance_for_neg_DRUG_INDEX.csv table.
+In addition this return below figures, first two pics are figure of top 10 PC1 score GO and bottom10 for positive drug responce score's Cell Line and others are for negative drug responce score's Cell Line.
+  
+This script's first step is applying PCA to all Hidden Layer values with n_compounds = 1. There are 2000 GOs and 100,000 samples, so a matrix of 100,000*2000 is generated.
+
+Next step is determining which cell line contains the drug based on the Pubchem ID. Since this data has a Drug Response value, it is divided into Positive and Negative data, depending on whether it is greater or equal to 0.
+
+The PCA values for each GO are then averaged for Positives and Negatives. The Top10 and Bottom10 are sorted and saved for each Positive and Negative.
+  
+![image](https://user-images.githubusercontent.com/8393063/183318483-0ec0a984-7c58-4ba2-bc90-eb450398741e.png)
+
+![image](https://user-images.githubusercontent.com/8393063/183318486-fdbb60ad-8fe4-454e-8e6f-6d0f67a8b5f6.png)
+
+![image](https://user-images.githubusercontent.com/8393063/183318492-c5450a6d-3824-4fa8-8367-e3b1d02abb07.png)
+
+![image](https://user-images.githubusercontent.com/8393063/183318498-f6f540ef-4c18-40f1-80b1-e16ca6c666d2.png)
+
+  
 ### 6. Identification of subsystems important using RLIPP
 
 
