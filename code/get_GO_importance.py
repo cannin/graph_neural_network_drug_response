@@ -33,27 +33,28 @@ def get_pca(hidden, hidden_data_path):
     return pca
 
 
-def get_figure(tmp_pos, tmp_neg, pubchem_id):
-    plt.bar(list(tmp_pos.index)[:10], tmp_pos[0][:10])
+def get_figure(PREFIX, tmp_pos, pubchem_id):
+    
+    Markdown('<strong>{}</strong><br/>'.format(PREFIX))
+    plt.bar(
+        list(tmp_pos.index)[:10],
+        tmp_pos[0][:10]
+    )
     plt.xticks(rotation=45)
-    plt.savefig("./pos_top10_{}.png".format(pubchem_id))
+    plt.xlabel('Top 10 GO terms')
+    plt.ylabel('PC1 score')
+    plt.savefig('./{}_top10_{}.png'.format(PREFIX, pubchem_id))
     plt.show()
-
-    plt.bar(list(tmp_pos.index)[-10:], tmp_pos[0][-10:])
+    
+    plt.bar(
+        list(tmp_pos.index)[-10:],
+        tmp_pos[0][-10:]
+    )
     plt.xticks(rotation=45)
-    plt.savefig("./pos_worst10_{}.png".format(pubchem_id))
+    plt.xlabel('Bottom 10 GO terms')
+    plt.ylabel('PC1 score')
+    plt.savefig('./{}_bottom10_{}.png'.format(PREFIX, pubchem_id))
     plt.show()
-
-    plt.bar(list(tmp_neg.index)[:10], tmp_neg[0][:10])
-    plt.xticks(rotation=45)
-    plt.savefig("./neg_top10_{}.png".format(pubchem_id))
-    plt.show()
-
-    plt.bar(list(tmp_neg.index)[-10:], tmp_neg[0][-10:])
-    plt.xticks(rotation=45)
-    plt.savefig("./neg_worst10_{}.png".format(pubchem_id))
-    plt.show()
-
 
 def get_importance(
         hidden_data_path, 
