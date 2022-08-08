@@ -34,69 +34,54 @@ def get_pca(hidden, hidden_data_path):
 
 
 def get_figure(PREFIX, tmp_pos, pubchem_id):
-    
-    Markdown('<strong>{}</strong><br/>'.format(PREFIX))
-    plt.bar(
-        list(tmp_pos.index)[:10],
-        tmp_pos[0][:10]
-    )
+
+    Markdown("<strong>{}</strong><br/>".format(PREFIX))
+    plt.bar(list(tmp_pos.index)[:10], tmp_pos[0][:10])
     plt.xticks(rotation=45)
-    plt.xlabel('Top 10 GO terms')
-    plt.ylabel('PC1 score')
-    plt.savefig('./{}_top10_{}.png'.format(PREFIX, pubchem_id))
+    plt.xlabel("Top 10 GO terms")
+    plt.ylabel("PC1 score")
+    plt.savefig("./{}_top10_{}.png".format(PREFIX, pubchem_id))
     plt.show()
-    
-    plt.bar(
-        list(tmp_pos.index)[-10:],
-        tmp_pos[0][-10:]
-    )
+
+    plt.bar(list(tmp_pos.index)[-10:], tmp_pos[0][-10:])
     plt.xticks(rotation=45)
-    plt.xlabel('Bottom 10 GO terms')
-    plt.ylabel('PC1 score')
-    plt.savefig('./{}_bottom10_{}.png'.format(PREFIX, pubchem_id))
+    plt.xlabel("Bottom 10 GO terms")
+    plt.ylabel("PC1 score")
+    plt.savefig("./{}_bottom10_{}.png".format(PREFIX, pubchem_id))
     plt.show()
+
 
 def get_importance(
-        hidden_data_path, 
-        test, 
-        SMILES_PubchemID_table_data_path,
-        pubchem_id
-    ):
+    hidden_data_path, test, SMILES_PubchemID_table_data_path, pubchem_id
+):
     hidden = listdir(hidden_data_path)
     hidden = [i for i in hidden if "GO" in i]
-    
+
     GO_terms = get_pca(hidden, hidden_data_path)
-    pubchem = pd.read_csv(
-        SMILES_PubchemID_table_data_path,
-        header=None,
-        sep='\t'
-    )
-    
-    test = pd.read_csv(
-        test,
-        header=None,
-        sep='\t'
-    )
-    
+    pubchem = pd.read_csv(SMILES_PubchemID_table_data_path, header=None, sep="\t")
+
+    test = pd.read_csv(test, header=None, sep="\t")
+
     tmp = pubchem[pubchem[0] == pubchem_id]
     tmp = test[test[1] == tmp[1].values[0]]
-    
-    tmp_pos = tmp[tmp[2] > 0] 
-    tmp_neg = tmp[tmp[2] < 0] 
 
-    tmp_pos= pd.DataFrame(
-        np.mean(GO_terms.loc[list(tmp_pos.index)])
-    ).sort_values(0, ascending=False)
-     
-    tmp_neg = pd.DataFrame(
-        np.mean(GO_terms.loc[list(tmp_neg.index)])
-    ).sort_values(0, ascending=False)
-    
-    tmp_pos.to_csv('importance_for_pos_{}.csv'.format(pubchem_id))
-    tmp_neg.to_csv('importance_for_neg_{}.csv'.format(pubchem_id))
+    tmp_pos = tmp[tmp[2] > 0]
+    tmp_neg = tmp[tmp[2] < 0]
 
-    get_figure('pos', tmp_pos, pubchem_id)
-    get_figure('neg', tmp_neg, pubchem_id)
+    tmp_pos = pd.DataFrame(np.mean(GO_terms.loc[list(tmp_pos.index)])).sort_values(
+        0, ascending=False
+    )
+
+    tmp_neg = pd.DataFrame(np.mean(GO_terms.loc[list(tmp_neg.index)])).sort_values(
+        0, ascending=False
+    )
+
+    tmp_pos.to_csv("importance_for_pos_{}.csv".format(pubchem_id))
+    tmp_neg.to_csv("importance_for_neg_{}.csv".format(pubchem_id))
+
+    get_figure("pos", tmp_pos, pubchem_id)
+    get_figure("neg", tmp_neg, pubchem_id)
+
 
 if __name__ == "__main__":
     args = sys.argv
