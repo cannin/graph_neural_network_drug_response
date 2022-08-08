@@ -141,15 +141,14 @@ This script's first step is applying PCA to all Hidden Layer values with n_compo
 Next step is determining which cell line contains the drug based on the Pubchem ID. Since this data has a Drug Response value, it is divided into Positive and Negative data, depending on whether it is greater or equal to 0.
 
 The PCA values for each GO are then averaged for Positives and Negatives. The Top10 and Bottom10 are sorted and saved for each Positive and Negative.
-  
-![image](https://user-images.githubusercontent.com/8393063/183318483-0ec0a984-7c58-4ba2-bc90-eb450398741e.png)
 
-![image](https://user-images.githubusercontent.com/8393063/183318486-fdbb60ad-8fe4-454e-8e6f-6d0f67a8b5f6.png)
+![image](https://user-images.githubusercontent.com/8393063/183324468-1b1f5150-a402-4922-8b30-d5c04b1e3c5a.png)
 
-![image](https://user-images.githubusercontent.com/8393063/183318492-c5450a6d-3824-4fa8-8367-e3b1d02abb07.png)
+![image](https://user-images.githubusercontent.com/8393063/183324471-a8a52391-f109-4caf-8f34-0600a0527e21.png)
 
-![image](https://user-images.githubusercontent.com/8393063/183318498-f6f540ef-4c18-40f1-80b1-e16ca6c666d2.png)
+![image](https://user-images.githubusercontent.com/8393063/183324479-ce51ecb9-d18f-4f4a-a79b-3ff918901fdb.png)
 
+![image](https://user-images.githubusercontent.com/8393063/183324491-7d6cfb16-124f-4081-8e0c-0955b97db8e4.png)
   
 ### 6. Identification of subsystems important using RLIPP
 
