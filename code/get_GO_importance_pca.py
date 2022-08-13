@@ -15,6 +15,16 @@ warnings.filterwarnings("ignore")
 
 
 def get_pca(hidden, hidden_data_path):
+
+    """
+    Extracts pca result for each hidden layer
+
+    :param hidden: list of hidden data
+    :param hidden_data_path: PATH to hidden data
+
+    :return: pca result for each hidden layer
+    """
+
     pca = pd.DataFrame()
 
     print("Start to calculate the PCA of each hidden layer.")
@@ -33,17 +43,29 @@ def get_pca(hidden, hidden_data_path):
     return pca
 
 
-def get_figure(PREFIX, tmp_pos, pubchem_id):
+def get_figure(PREFIX, importance, pubchem_id):
 
-    Markdown("<strong>{}</strong><br/>".format(PREFIX))
-    plt.bar(list(tmp_pos.index)[:10], tmp_pos[0][:10])
+    """
+    Draws the figure of importance of each GO term
+
+    :param PREFIX: prefix of the figure, pos or neg
+    :param importance: importance of each GO term
+    :param pubchem_id: pubchem id of the molecule which you want to draw the figure
+    """
+
+    print("Start to draw the figure of importance of each GO term.")
+    print("Pubchem ID: {}".format(pubchem_id))
+    print("Prefix: {}".format(PREFIX))
+    print("Top 10 GO terms: {}".format(importance.index[:10]))
+    plt.bar(list(importance.index)[:10], importance[0][:10])
     plt.xticks(rotation=45)
     plt.xlabel("Top 10 GO terms")
     plt.ylabel("PC1 score")
     plt.savefig("./{}_top10_{}.png".format(PREFIX, pubchem_id))
     plt.show()
 
-    plt.bar(list(tmp_pos.index)[-10:], tmp_pos[0][-10:])
+    print("Bottom 10 GO terms: {}".format(importance.index[-10:]))
+    plt.bar(list(importance.index)[-10:], importance[0][-10:])
     plt.xticks(rotation=45)
     plt.xlabel("Bottom 10 GO terms")
     plt.ylabel("PC1 score")
@@ -54,6 +76,19 @@ def get_figure(PREFIX, tmp_pos, pubchem_id):
 def get_importance(
     hidden_data_path, test, SMILES_PubchemID_table_data_path, pubchem_id
 ):
+
+    """
+    Calculates the importance of each GO term using PCA
+
+    :param hidden_data_path: PATH to hidden data
+    :param test: test data
+    :param SMILES_PubchemID_table_data_path: PATH to SMILES_PubchemID_table data
+    :param pubchem_id: pubchem id of the molecule which you want to draw the figure
+
+    :return: importance of each GO term and the PCA result for each hidden layer
+
+    """
+
     hidden = listdir(hidden_data_path)
     hidden = [i for i in hidden if "GO" in i]
 

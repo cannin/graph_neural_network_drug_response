@@ -4,16 +4,28 @@ import numpy as np
 import pandas as pd
 
 
-def extractTestData(SMILES, nci60PubChemID, nci60Act_ccle):
+def extractTestData(
+    smiles_data_path, nci60PubChemID_data_path, nci60Act_ccle_data_path
+):
+
+    """
+    Extracts test data from nci60_to_ccle
+
+    :param smiles_data_path: PATH to smiles data
+    :param nci60PubChemID_data_path: PATH to nci60PubChemID data
+    :param nci60Act_ccle_data_path: PATH to nci60Act_ccle data
+
+    return test dataframe
+    """
 
     # Read original train data
     train = pd.read_table("./data/drugcell_train.txt", header=None)
 
     # Get SMILES from PubChem ID  https://pubchem.ncbi.nlm.nih.gov/idexchange/idexchange.cgi
-    smiles = pd.read_table(SMILES, header=None).drop(0, axis=1)
+    smiles = pd.read_table(smiles_data_path, header=None).drop(0, axis=1)
 
     # Replace index with Drug ID
-    smiles.index = pd.read_csv(nci60PubChemID, index_col=0, header=None).index
+    smiles.index = pd.read_csv(nci60PubChemID_data_path, index_col=0, header=None).index
     smiles.columns = ["SMILES"]
 
     # Check if the SMILES are in the train data
@@ -25,7 +37,7 @@ def extractTestData(SMILES, nci60PubChemID, nci60Act_ccle):
     smiles = t.copy()
 
     # Choose the columns and indexes that are in the train data
-    nci60Act = pd.read_csv(nci60Act_ccle, index_col=0)
+    nci60Act = pd.read_csv(nci60Act_ccle_data_path, index_col=0)
     nci60Act = nci60Act.loc[sorted(list(set(smiles.index) & set(nci60Act.index)))][
         list(set(train[0]) & set(nci60Act.columns))
     ]

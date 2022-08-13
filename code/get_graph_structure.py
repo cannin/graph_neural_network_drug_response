@@ -16,6 +16,17 @@ from tqdm import tqdm
 
 
 def get_pca(hidden, hidden_data_path, sample_index):
+
+    """
+    Extracts pca result for each hidden layer
+
+    :param hidden: list of hidden data
+    :param hidden_data_path: PATH to hidden data
+    :param sample_index: list of sample index to extract
+
+    :return: pca result for each hidden layer
+    """
+
     pca = pd.DataFrame()
 
     print("Start to calculate the PCA of each hidden layer.")
@@ -35,28 +46,22 @@ def get_pca(hidden, hidden_data_path, sample_index):
     return pca
 
 
-def get_single_hidden_layer(hidden, hidden_data_path, sample_index):
-    df = pd.DataFrame()
+def get_weight_parallel(gene, graph, pca):
 
-    print("Get each hidden layer.")
-    for i in tqdm(hidden):
-        X = pd.read_csv(
-            hidden_data_path + i,
-            sep=" ",
-            header=None,
-        ).loc[sample_index]
+    """
+    Calculates the weight of each gene
 
-        df = pd.concat([df, X.T])
+    :param gene: gene name
+    :param G: graph
+    :param pca: pca result for each hidden layer
 
-    df.columns = sample_index
-    df.index = [i.split(".")[0] for i in hidden]
+    :return: weight of each gene
+    """
 
-    return df
+    # get the all path from the gene to the GO term
+    paths = list(nx.all_simple_paths(graph, source="GO:0008150", target=gene))
 
-
-def get_weight_parallel(gene, G, pca):
-    paths = list(nx.all_simple_paths(G, source="GO:0008150", target=gene))
-
+    # remove duplicated path
     if len(paths) != 1:
         path = set()
         for i in paths:
@@ -64,11 +69,23 @@ def get_weight_parallel(gene, G, pca):
     else:
         path = paths[0]
 
+    # get the weight of gene
     path.remove(gene)
     return [gene] + list(np.sum(pca.loc[path], axis=0))
 
 
 def get_weight(sample_index, hidden_data_path, go):
+
+    """
+    Get the weight of each gene and GO term in the graph
+
+    :param sample_index: list of sample index to extract
+    :param hidden_data_path: PATH to hidden data
+    :param go: GO term data
+
+    :return: weight of each gene and GO term in the graph
+    """
+
     sample_index = sample_index.split(",")
     sample_index = list(map(int, sample_index))
     hidden = listdir(hidden_data_path)
@@ -80,10 +97,7 @@ def get_weight(sample_index, hidden_data_path, go):
         header=None,
     )
 
-    if X.shape[1] == 1:
-        GO_terms = get_single_hidden_layer(hidden, hidden_data_path, sample_index)
-    else:
-        GO_terms = get_pca(hidden, hidden_data_path, sample_index)
+    GO_terms = get_pca(hidden, hidden_data_path, sample_index)
 
     nodes = list(set(go[0]) | set(go[1]))
     genes = set(go[["GO" not in i for i in go[1]]][1])
@@ -105,6 +119,15 @@ def get_weight(sample_index, hidden_data_path, go):
 
 
 def get_graph_info(sample_index, hidden_data_path, onto_file):
+    """
+    Get the graph structure of the network
+
+    :param sample_index: list of sample index to extract
+    :param hidden_data_path: PATH to hidden data
+    :param onto_file: ontology file
+
+    :return: graph structure of the network
+    """
     go = pd.read_table(onto_file, header=None)[[0, 1]]
     go.to_csv(
         "./graph.csv",

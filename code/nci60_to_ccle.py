@@ -5,6 +5,14 @@ import pandas as pd
 
 def get_ccle_dataframe(file_name):
 
+    """
+    Reads csv file and changes column names to match ccle.
+
+    :param file_name: PATH to ccle file
+
+    return dataframe
+    """
+
     # Read in the file
     nci60Act = pd.read_csv(
         file_name,
@@ -49,7 +57,7 @@ def get_ccle_dataframe(file_name):
     nci60Act.columns = col
 
     # Read table of cell line names
-    sanger_cell_lines = pd.read_csv("./data/sanger_to_ccle.csv", index_col=0)
+    sanger_cell_lines = pd.read_csv("../data/sanger_to_ccle.csv", index_col=0)
 
     # Create a dictionary of the cell line names
     ccle_dict = {

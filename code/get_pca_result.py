@@ -10,8 +10,20 @@ from tqdm import tqdm
 
 
 def get_pca_result(test_data_path, hidden_data_path):
+
+    """
+    Extracts pca result from all hidden data
+
+    :param test_data_path: PATH to test data
+    :param hidden_data_path: PATH to hidden data
+
+    return pca result
+    """
+
+    # Read test data
     p = pd.read_csv(test_data_path, header=None, sep="\t")
 
+    # read and concat all hidden data
     hidden = listdir(hidden_data_path)
     hidden = [i for i in hidden if "GO" in i]
 
@@ -22,6 +34,7 @@ def get_pca_result(test_data_path, hidden_data_path):
             axis=1,
         )
 
+    # using PCA to reduce dimension to 2
     X.columns = list(range(X.shape[1]))
     X_pca = PCA(n_components=2).fit_transform(X)
 
