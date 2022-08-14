@@ -35,7 +35,9 @@ jobs:
            Rscript code/data_extraction.r
            python code/nci60_to_ccle.py data/nci60Act.csv
            python code/testdata_extraction.py data/PubChemIDToSmiles.txt data/PubChemID.csv data/nci60Act_ccle.csv
-
+           python code/get_data_for_training.py
+           python code/get_data_with_class_label.py
+          
       - uses: actions/upload-artifact@v3
         with:
           path: |
