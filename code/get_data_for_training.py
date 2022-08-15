@@ -48,10 +48,10 @@ pd.DataFrame(set(train[0])).reset_index().to_csv(
 
 
 cell2ind = pd.read_csv("DrugCell/data/cell2ind.txt", header=None, sep="\t")
-
+print(cell2ind.head())
 
 t = pd.read_csv("DrugCell/data_rcellminer/cell2ind.txt", header=None, sep="\t")
-
+print(t.head())
 
 cell2mut = (
     pd.read_csv(
