@@ -48,7 +48,6 @@ jobs:
             data/rcellminer_test.txt
             DrugCell/data_rcellminer/drug2ind.txt
             DrugCell/data_rcellminer/drug2fingerprint.csv
-            DrugCell/data/cell2ind.txt
             DrugCell/data_rcellminer/cell2ind.txt
             DrugCell/data_rcellminer/cell2mut.txt
             DrugCell/data_rcellminer/gene2ind.txt
