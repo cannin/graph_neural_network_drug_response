@@ -6,13 +6,13 @@ from tqdm import tqdm
 
 # Create PubChem_id list
 pubchem_id = pd.read_csv(
-    "../DrugCell/data_rcellminer/pubchem_id_by_nsc.csv", index_col=0
+    "DrugCell/data_rcellminer/pubchem_id_by_nsc.csv", index_col=0
 ).dropna()
 pubchem_id
 
 
 smiles = pd.read_table(
-    "../DrugCell/data_rcellminer/SMILES_from_PubchemID.txt", header=None
+    "DrugCell/data_rcellminer/SMILES_from_PubchemID.txt", header=None
 )
 smiles.index = pubchem_id.index
 smiles = smiles.drop(0, axis=1)
@@ -20,8 +20,8 @@ smiles.columns = ["smiles"]
 smiles = smiles.to_dict()["smiles"]
 
 
-nci60Act = pd.read_csv("../data/nci60Act_ccle.csv", index_col=0)
-cell2ind = list(pd.read_table("../DrugCell/data/cell2ind.txt", header=None)[1])
+nci60Act = pd.read_csv("data/nci60Act_ccle.csv", index_col=0)
+cell2ind = list(pd.read_table("DrugCell/data/cell2ind.txt", header=None)[1])
 nci60Act = nci60Act[list(set(cell2ind) & set(nci60Act.columns))]
 
 
@@ -34,7 +34,7 @@ for i in nci60Act.columns:
 
 
 class_nsc = pd.read_csv(
-    "../DrugCell/data_rcellminer/class_by_nsc.csv",
+    "DrugCell/data_rcellminer/class_by_nsc.csv",
 )
 
 
@@ -84,21 +84,21 @@ df.loc["total"] = np.sum(df, axis=0)
 
 
 test.to_csv(
-    "../DrugCell/data_rcellminer/test_rcell_wo_other.txt",
+    "DrugCell/data_rcellminer/test_rcell_wo_other.txt",
     sep="\t",
     header=None,
     index=None,
 )
 
 val.to_csv(
-    "../DrugCell/data_rcellminer/val_rcell_wo_other.txt",
+    "DrugCell/data_rcellminer/val_rcell_wo_other.txt",
     sep="\t",
     header=None,
     index=None,
 )
 
 train.to_csv(
-    "../DrugCell/data_rcellminer/train_rcell_wo_other.txt",
+    "DrugCell/data_rcellminer/train_rcell_wo_other.txt",
     sep="\t",
     header=None,
     index=None,
