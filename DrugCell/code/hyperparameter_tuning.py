@@ -1,20 +1,20 @@
-import argparse
-import os
 import sys
-import time
-
+import os
 import numpy as np
-import optuna
 import torch
+import torch.utils.data as du
+from torch.autograd import Variable
 import torch.nn as nn
 import torch.nn.functional as F
-import torch.utils.data as du
-from optuna.trial import TrialState
-from torch.autograd import Variable
-
 import util
-from drugcell_NN import *
 from util import *
+from drugcell_NN import *
+import argparse
+import numpy as np
+import time
+
+import optuna
+from optuna.trial import TrialState
 
 
 def create_term_mask(term_direct_gene_map, gene_dim):
@@ -89,12 +89,14 @@ def objective(trial):
         drug_features,
     ) = get_data()
 
-    train_epochs = 3
+    train_epochs = 300
 
     num_hiddens_genotype = trial.suggest_int("num_hiddens_genotype", 1, 6)
     num_hiddens_final = trial.suggest_int("num_hiddens_final", 1, 6)
-    i = trial.suggest_int("i", 1, 4)
-
+    i = trial.suggest_int(
+        "i", 1, 4
+    )
+    
     if i == 1:
         num_hiddens_drug = [256, 64, 4]
     elif i == 2:
@@ -103,7 +105,7 @@ def objective(trial):
         num_hiddens_drug = [512, 256, 64, 8]
     else:
         num_hiddens_drug = [512, 256, 64, 8, 4]
-
+    
     model = drugcell_nn(
         term_size_map,
         term_direct_gene_map,
@@ -140,7 +142,7 @@ def objective(trial):
             param.data = param.data * 0.1
 
     batch_size = trial.suggest_categorical(
-        "batch_size", [1000, 2000, 3000, 4000, 5000, 6000]
+        "batch_size", [1000, 2000, 3000]
     )
 
     train_loader = du.DataLoader(
@@ -196,8 +198,6 @@ def objective(trial):
 
 
 CUDA_ID = 0
-
 study = optuna.create_study(direction="minimize")
-study.optimize(objective, n_trials=3)
-
+study.optimize(objective, n_trials=50)
 study.trials_dataframe().to_csv("study_history.csv")
