@@ -46,4 +46,13 @@ jobs:
             data/nci60Act.csv
             data/nci60Act_ccle.csv
             data/rcellminer_test.txt
-            
+            DrugCell/data_rcellminer/drug2ind.txt
+            DrugCell/data_rcellminer/drug2fingerprint.csv
+            DrugCell/data/cell2ind.txt
+            DrugCell/data_rcellminer/cell2ind.txt
+            DrugCell/data_rcellminer/cell2mut.txt
+            DrugCell/data_rcellminer/gene2ind.txt
+            DrugCell/data_rcellminer/go.txt
+            DrugCell/data_rcellminer/test_rcell_wo_other.txt
+            DrugCell/data_rcellminer/train_rcell_wo_other.txt
+            DrugCell/data_rcellminer/val_rcell_wo_other.txt
