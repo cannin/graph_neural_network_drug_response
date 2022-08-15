@@ -62,7 +62,7 @@ cell2mut = pd.read_csv(
     'DrugCell/data/cell2mutation.txt',
     header=None,
 ).loc[
-    [cell2ind[cell2ind[1] == i].index[0] for i in t[1]]
+    [int(cell2ind[cell2ind[1] == i][0]) for i in t[1]]
 ].reset_index(drop=True)
 
 
