@@ -47,19 +47,19 @@ pd.DataFrame(set(train[0])).reset_index().to_csv(
 )
 
 cell2ind = pd.read_csv(
-    '../DrugCell/data/cell2ind.txt',
+    'DrugCell/data/cell2ind.txt',
     header=None,
     sep='\t'
 )
 
 t = pd.read_csv(
-    '../DrugCell/data_rcellminer/cell2ind.txt',
+    'DrugCell/data_rcellminer/cell2ind.txt',
     header=None,
     sep='\t'
 )
 
 cell2mut = pd.read_csv(
-    '../DrugCell/data/cell2mutation.txt',
+    'DrugCell/data/cell2mutation.txt',
     header=None,
 ).loc[
     [cell2ind[cell2ind[1] == i].index[0] for i in t[1]]
