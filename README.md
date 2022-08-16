@@ -154,30 +154,7 @@ The PCA values for each GO are then averaged for Positives and Negatives. The To
 
 ![image](https://user-images.githubusercontent.com/8393063/183324491-7d6cfb16-124f-4081-8e0c-0955b97db8e4.png)
   
-### 6. Identification of subsystems important using RLIPP
-
-
-```console
-git clone https://github.com/aksinghal5590/rlipp.git
-cd rlipp
-sh  scripts/rlipp.sh 
-```
-
-This is the method that is officially used in the DrugCell paper.  
-You need to modify scripts/rlipp.sh to adjust to your environment.
-
-In this script, ridge regression is performed based on the results of the hidden layer of each GO to produce correlations. By comparing this correlation with the correlation of the parent, RLIPP is computed. Positive RLIPP indicates higher predictive power than children, while negative values indicate low predictive power.       
-  
-  
-  
-$$
-\text{RLIPP score} = \left(\rho_{2}-\rho_{1}\right) / \rho_{1},
-$$
-
-where $\rho_{1}$ is children's correlation and $\rho_{2}$ is parent's correlation.
-
-
-### 7. (Optional) Hyper parameter tuning
+### 6. (Optional) Hyper parameter tuning
 
 <details>
 
