@@ -79,20 +79,7 @@ python code/predict_drugcell.py -gene2id ./DrugCell/data/gene2ind.txt \
                                 -load ./DrugCell/MODEL/model.pt
 ```
 
-This is the script to run DrugCell model.
-This requires these files:
-- from DrugCell repository
-  - ./DrugCell/data/gene2ind.txt : index to each gene
-  - ./DrugCell/data/cell2ind.txt : index to each cell line
-  - ./DrugCell/data/drug2ind_rcell.txt : index to each drug
-  - ./DrugCell/data/cell2mutation.txt : matrix of cell by mutations
-  - ./DrugCell/data/mfp.txt : morgan finger printing for each drug
-  - ./DrugCell/MODEL/model.pt : pre-trained model for rcellminer 
-- from this repository
-  - ../data/rcellminer_test.txt : test data 
-- output directories
-  - ./Hidden : directory for final hidden layers' weights 
-  - ./Result : directory for each GO's correlation
+[DrugCell's document](https://github.com/inoue0426/DrugCell#drugcell-release-v10)
 
 ### 5. Visualization using Cytoscape and PCA
 
