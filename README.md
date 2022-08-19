@@ -68,33 +68,28 @@ git clone git@github.com:inoue0426/DrugCell.git
 unzip ./DrugCell/MODEL/model.pt.zip
 mkdir Hidden
 mkdir Result
-python code/predict_drugcell.py -gene2id ./DrugCell/data/gene2ind.txt \
-                                -cell2id ./DrugCell/data/cell2ind.txt \
-                                -drug2id ./DrugCell/data/drug2ind_rcell.txt \
-                                -genotype ./DrugCell/data/cell2mutation.txt \
-                                -fingerprint ./DrugCell/data/mfp.txt \
-                                -predict ../data/rcellminer_test.txt \
+python code/predict_drugcell.py -gene2id ./DrugCell/data_rcellminer/gene2ind.txt \
+                                -cell2id ./DrugCell/data_rcellminer/cell2ind.txt \
+                                -drug2id ./DrugCell/data_rcellminer/drug2ind.txt \
+                                -genotype ./DrugCell/data_rcellminer/cell2mut.txt \
+                                -fingerprint ./DrugCell/data_rcellminer/drug2fingerprint.csv \
+                                -predict ./DrugCell/data_rcellminer/test_rcell_wo_other.txt \
                                 -hidden ./Hidden \
                                 -result ./Result \
-                                -load ./DrugCell/MODEL/model.pt
+                                -load ./DrugCell/pretrained_model_rcellminer/model.pt
 ```
 
-This is the script to run DrugCell model.
-This requires these files:
-- from DrugCell repository
-  - ./DrugCell/data/gene2ind.txt : index to each gene
-  - ./DrugCell/data/cell2ind.txt : index to each cell line
-  - ./DrugCell/data/drug2ind_rcell.txt : index to each drug
-  - ./DrugCell/data/cell2mutation.txt : matrix of cell by mutations
-  - ./DrugCell/data/mfp.txt : morgan finger printing for each drug
-  - ./DrugCell/MODEL/model.pt : pre-trained model for rcellminer 
-- from this repository
-  - ../data/rcellminer_test.txt : test data 
-- output directories
-  - ./Hidden : directory for final hidden layers' weights 
-  - ./Result : directory for each GO's correlation
+[DrugCell's document](https://github.com/inoue0426/DrugCell#drugcell-release-v10)
 
-### 5. Visualization using Cytoscape and PCA
+### 5 Get corralation score for each GO Term
+  
+- [get_correlation_score.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_correlation_score.ipynb)
+
+This is implemented based on RLIPP, the evaluation function for DrugCell. [github](https://github.com/aksinghal5590/rlipp)
+  
+Based on the correlation, this code interprets which GO is effective for each drug. The Hidden Layer's value is first obtained for each drug's GO. A ridge regression is performed using this as the feature value and DrugCell's predicted value as y. Afterwards, the predicted value is compared with the predicted value in DrugCell. The correlation between this predicted value and the predicted value of DrugCell helps us determine how well the hidden layer of this GO is performing.
+  
+### 6. Visualization using Cytoscape and PCA
 
 - [get_pca_result.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_pca_result.ipynb)
 - [get_graph_structure.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_graph_structure.ipynb)
@@ -154,12 +149,12 @@ The PCA values for each GO are then averaged for Positives and Negatives. The To
 
 ![image](https://user-images.githubusercontent.com/8393063/183324491-7d6cfb16-124f-4081-8e0c-0955b97db8e4.png)
   
-### 6. (Optional) Hyper parameter tuning
+### 7. (Optional) Hyper parameter tuning
 
 <details>
 
 ```console
-python ./DrugCell/code/hyperparameter_tuning.py
+python ../DrugCell/code/hyperparameter_tuning.py
 ```
 
 This does not require anything but you can set any parameter like -test ../data/rcellminer_test.txt.
