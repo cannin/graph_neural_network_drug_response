@@ -149,7 +149,7 @@ The PCA values for each GO are then averaged for Positives and Negatives. The To
 
 ![image](https://user-images.githubusercontent.com/8393063/183324491-7d6cfb16-124f-4081-8e0c-0955b97db8e4.png)
   
-### 6. (Optional) Hyper parameter tuning
+### 7. (Optional) Hyper parameter tuning
 
 <details>
 
