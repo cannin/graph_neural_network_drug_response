@@ -68,15 +68,15 @@ git clone git@github.com:inoue0426/DrugCell.git
 unzip ./DrugCell/MODEL/model.pt.zip
 mkdir Hidden
 mkdir Result
-python code/predict_drugcell.py -gene2id ./DrugCell/data/gene2ind.txt \
-                                -cell2id ./DrugCell/data/cell2ind.txt \
-                                -drug2id ./DrugCell/data/drug2ind_rcell.txt \
-                                -genotype ./DrugCell/data/cell2mutation.txt \
-                                -fingerprint ./DrugCell/data/mfp.txt \
-                                -predict ../data/rcellminer_test.txt \
+python code/predict_drugcell.py -gene2id ./DrugCell/data_rcellminer/gene2ind.txt \
+                                -cell2id ./DrugCell/data_rcellminer/cell2ind.txt \
+                                -drug2id ./DrugCell/data_rcellminer/drug2ind.txt \
+                                -genotype ./DrugCell/data_rcellminer/cell2mut.txt \
+                                -fingerprint ./DrugCell/data_rcellminer/drug2fingerprint.csv \
+                                -predict ./DrugCell/data_rcellminer/test_rcell_wo_other.txt \
                                 -hidden ./Hidden \
                                 -result ./Result \
-                                -load ./DrugCell/MODEL/model.pt
+                                -load ./DrugCell/pretrained_model_rcellminer/model.pt
 ```
 
 [DrugCell's document](https://github.com/inoue0426/DrugCell#drugcell-release-v10)
