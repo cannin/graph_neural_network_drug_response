@@ -4,4 +4,4 @@ mran-date: 2022-08-06
 update-packages: FALSE
 depends:
   BiocManager
-  rcellminer
+  bioc::rcellminer
