@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Week eight | PCA, visualization, and automatic data extraction"
+title:  "Week nine | PCA, visualization, and automatic data extraction"
 tags: gsoc
 author: Yoshitaka Inoue
 ---
