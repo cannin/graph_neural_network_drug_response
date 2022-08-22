@@ -37,7 +37,8 @@ Currently working on explaining drugs and correlation from biological phenomena.
 Some important GO terms are missing, so it might be challenging to explain whole drugs.  
 So, I plan to focus on some specific drugs approved by the FDA.  
 I still need to improve the model, so I will do experiments in parallel.  
-I've been extracting SMILES data from PubChem ID in rcellminer because I used to use the drug2id from original data.   
+
+In addition, I've been extracting SMILES data from PubChem ID in rcellminer because I used to use the drug2id from original data.   
 But right now I've created new drug2ind exclusive for our data. So, I can use our own PubChem data directly.   
 I'll try this after current experiments.  
 
