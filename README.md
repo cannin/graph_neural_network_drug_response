@@ -81,7 +81,7 @@ python code/predict_drugcell.py -gene2id ./DrugCell/data_rcellminer/gene2ind.txt
 
 [DrugCell's document](https://github.com/inoue0426/DrugCell#drugcell-release-v10)
 
-### 5 Correlation-based visualization (Based on DrugCell's evaluation function, RLIPP)
+### 5. Correlation-based visualization (Based on DrugCell's evaluation function, RLIPP)
   
 - [get_correlation_score.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_correlation_score.ipynb)
 
