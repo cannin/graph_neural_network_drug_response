@@ -12,7 +12,7 @@ We just choose the data with class label DNA.
 """
 
 # Read the data
-nci60Act = pd.read_csv("../data/nci60Act_ccle.csv", index_col=0)
+nci60Act = pd.read_csv("data/nci60Act_ccle.csv", index_col=0)
 cell2ind = list(pd.read_table("DrugCell/data/cell2ind.txt", header=None)[1])
 nci60Act = nci60Act[list(set(cell2ind) & set(nci60Act.columns))]
 nci60Act
@@ -29,7 +29,7 @@ base = base.reset_index(drop=True)
 # Merge class and SMILES on NSC
 class_nsc = pd.read_csv("DrugCell/data_rcellminer/class_by_nsc.csv")
 base_label = base.merge(class_nsc, on="NSC")
-smiles = pd.read_csv("../data/nsc_cid_smiles.csv")[["NSC", "SMILES"]]
+smiles = pd.read_csv("data/nsc_cid_smiles.csv")[["NSC", "SMILES"]]
 base_smiles = base_label.merge(smiles, on="NSC").drop("NSC", axis=1)
 
 # Choose the data with class label DNA
