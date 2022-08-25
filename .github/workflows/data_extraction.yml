@@ -34,8 +34,8 @@ jobs:
       - run: |
            Rscript code/data_extraction.r
            python code/nci60_to_ccle.py data/nci60Act.csv
-           python code/get_data_for_training.py
            python code/get_data_with_class_label.py
+           python code/get_data_for_training.py
           
       - uses: actions/upload-artifact@v3
         with:
@@ -50,6 +50,6 @@ jobs:
             DrugCell/data_rcellminer/cell2mut.txt
             DrugCell/data_rcellminer/gene2ind.txt
             DrugCell/data_rcellminer/go.txt
-            DrugCell/data_rcellminer/test_rcell_wo_other.txt
-            DrugCell/data_rcellminer/train_rcell_wo_other.txt
-            DrugCell/data_rcellminer/val_rcell_wo_other.txt
+            DrugCell/data_rcellminer/test_DNA.txt
+            DrugCell/data_rcellminer/train_DNA.txt
+            DrugCell/data_rcellminer/val_DNA.txt
