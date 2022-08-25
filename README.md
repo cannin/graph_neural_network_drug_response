@@ -89,8 +89,16 @@ This is implemented based on RLIPP, the evaluation function for DrugCell. [githu
   
 Based on the correlation, this code interprets which GO is effective for each drug. The Hidden Layer's value is first obtained for each drug's GO. A ridge regression is performed using this as the feature value and DrugCell's predicted value as y. Afterwards, the predicted value is compared with the predicted value in DrugCell. The correlation between this predicted value and the predicted value of DrugCell helps us determine how well the hidden layer of this GO is performing.
   
-### 6. PCA-based visualization with cytoscape
+- [get_graph_structure_from_corr_score.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_graph_structure_from_corr_score.ipynb)
+  
+This is the implementation to get the correlation for genes.  
+Firstly from the graph structure, you can get the path from the gene to GO:0008150.  
+There are so many PATHS to get there, and this code utilizes average to define each gene's correlatio
+  
+  ### 6. (Optional) PCA-based visualization with cytoscape
 
+  <details>
+    
 - [get_pca_result.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_pca_result.ipynb)
 - [get_graph_structure.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_graph_structure.ipynb)
 - [get_GO_importance.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_GO_importance.ipynb)
@@ -148,6 +156,8 @@ The PCA values for each GO are then averaged for Positives and Negatives. The To
 ![image](https://user-images.githubusercontent.com/8393063/183324479-ce51ecb9-d18f-4f4a-a79b-3ff918901fdb.png)
 
 ![image](https://user-images.githubusercontent.com/8393063/183324491-7d6cfb16-124f-4081-8e0c-0955b97db8e4.png)
+    
+ </details>
   
 ### 7. (Optional) Hyper parameter tuning
 
