@@ -86,12 +86,17 @@ python code/predict_drugcell.py -gene2id ./DrugCell/data_rcellminer/gene2ind.txt
 - [get_correlation_score.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_correlation_score.ipynb)
 
 This is implemented based on RLIPP, the evaluation function for DrugCell. [github](https://github.com/aksinghal5590/rlipp)
+
+![Screen Shot 2022-08-26 at 18 14 53](https://user-images.githubusercontent.com/8393063/187001938-57e90c6d-f25f-43b7-afc7-b3e52e283132.png)
   
 Based on the correlation, this code interprets which GO is effective for each drug. The Hidden Layer's value is first obtained for each drug's GO. A ridge regression is performed using this as the feature value and DrugCell's predicted value as y. Afterwards, the predicted value is compared with the predicted value in DrugCell. The correlation between this predicted value and the predicted value of DrugCell helps us determine how well the hidden layer of this GO is performing.
   
 - [get_graph_structure_from_corr_score.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_graph_structure_from_corr_score.ipynb)
   
 This is the implementation to get the correlation for genes.  
+
+![Screen Shot 2022-08-26 at 18 49 23](https://user-images.githubusercontent.com/8393063/187004837-16bd59ab-359d-4cb3-bfaf-e6d133cda365.png)
+
 Firstly from the graph structure, you can get the path from the gene to GO:0008150.  
 There are so many PATHS to get there, and this code utilizes average to define each gene's correlatio
   
