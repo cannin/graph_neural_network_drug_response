@@ -45,17 +45,9 @@ This is a script that replaces the nci60 Cell Line name with the CCLE one.
 <details>
 
 ```console
-python testdata_extraction.py ../data/PubChemIDToSmiles.csv ../data/PubChemID.csv ../data/nci60Act_ccle.csv
+ python code/get_data_with_class_label.py
+ python code/get_data_for_training.py
 ```
-
-This is the script to get test data.
-This requires these files:
-- PubChemIDToSmiles.csv
-  - Relation table between PubChemID and SMILES.
-  - You can get this from [here](https://pubchem.ncbi.nlm.nih.gov/idexchange/idexchange.cgi) with PubChemID file from Step 1.
-- ../data/PubChemID.csv 
-- ../data/nci60Act_ccle.csv
-  - These files are from step 1.
 
 </details>
 
