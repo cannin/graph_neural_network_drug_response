@@ -2,9 +2,20 @@
 
 This is a set of scripts to get data from rcellminer, convert the data for DrugCell, run DrugCell, and explain the results.
 
+## Brief overview of this repository.
+
+- [ ] Get data from rcellminer
+- [ ] Preprocess for DrugCell
+- [ ] Run DrugCell
+- [ ] Get Correlation score for GO terms
+- [ ] Get Correlation score for genes
+- [ ] Evaluate each drug response
+
+---
+
 ## Procedure
 
-* Step 1-3 are automatically running by GitHub actions. You can use each scripts if you want to run manually.   
+* Step 1-3 are automatically running by GitHub actions. You can use each scripts if you want to run manually.
 * You can get the artifact from [here](https://github.com/cannin/graph_neural_network_drug_response/actions/workflows/data_extraction.yml).
 
 ### 1. Extraction data using rcellminer.
@@ -15,7 +26,7 @@ This is a set of scripts to get data from rcellminer, convert the data for DrugC
 Rscript code/data_extraction.r
 ```
 
-This is the script to get 
+This is the script to get
 - relationships between PubChemID and Cell Line
 - PubChemID
 - drug response between Cell Lines and Drug
@@ -74,35 +85,35 @@ python code/predict_drugcell.py -gene2id ./DrugCell/data_rcellminer/gene2ind.txt
 [DrugCell's document](https://github.com/inoue0426/DrugCell#drugcell-release-v10)
 
 ### 5. Correlation-based visualization (Based on DrugCell's evaluation function, RLIPP)
-  
+
 - [get_correlation_score.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_correlation_score.ipynb)
 
 This is implemented based on RLIPP, the evaluation function for DrugCell. [github](https://github.com/aksinghal5590/rlipp)
 
 ![Screen Shot 2022-08-26 at 18 14 53](https://user-images.githubusercontent.com/8393063/187001938-57e90c6d-f25f-43b7-afc7-b3e52e283132.png)
-  
+
 Based on the correlation, this code interprets which GO is effective for each drug. The Hidden Layer's value is first obtained for each drug's GO. A ridge regression is performed using this as the feature value and DrugCell's predicted value as y. Afterwards, the predicted value is compared with the predicted value in DrugCell. The correlation between this predicted value and the predicted value of DrugCell helps us determine how well the hidden layer of this GO is performing.
-  
+
 - [get_graph_structure_from_corr_score.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_graph_structure_from_corr_score.ipynb)
-  
-This is the implementation to get the correlation for genes.  
+
+This is the implementation to get the correlation for genes.
 
 ![Screen Shot 2022-08-26 at 18 49 23](https://user-images.githubusercontent.com/8393063/187004837-16bd59ab-359d-4cb3-bfaf-e6d133cda365.png)
 
-Firstly from the graph structure, you can get the path from the gene to GO:0008150.  
+Firstly from the graph structure, you can get the path from the gene to GO:0008150.
 There are so many PATHS to get there, and this code utilizes average to define each gene's correlation.
- 
+
 ### 6. Visualization for each drug
- 
+
  - [Camptothecin](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BCamptothecin%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
  - [Fluorouracil](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BFluorouracil%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
  - [Fulvestrant](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BFulvestrant%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
  - [Methotrexate](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BMethotrexate%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
-  
+
   ### 7. (Optional) PCA-based visualization with cytoscape
 
   <details>
-    
+
 - [get_pca_result.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_pca_result.ipynb)
 - [get_graph_structure.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_graph_structure.ipynb)
 - [get_GO_importance.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_GO_importance.ipynb)
@@ -121,9 +132,9 @@ This requires these files:
 - from DrugCell repository
   - DrugCell/data/drugcell_ont.txt : ontology relationships data
 - from this repository
-  - ../data/rcellminer_test.txt : test data 
+  - ../data/rcellminer_test.txt : test data
 - from DrugCell prediction output
-  - /PATH/To/Hidden/ : directory for final hidden layers' weights 
+  - /PATH/To/Hidden/ : directory for final hidden layers' weights
 - from user's focus
   - SAMPLE_INDEX : this is the indexes to samples in test data which user focus on. (Ex. "100,200")
 
@@ -134,7 +145,7 @@ So if you run it, you can get a figure as below. Coloring is based on drug respo
 ![pca_result](https://user-images.githubusercontent.com/8393063/182660161-41039436-131a-4a94-bd3f-ac48381f4278.png)
 
 
-When you run the get_graph_structure.py, you can get graph.csv and weight.csv.   
+When you run the get_graph_structure.py, you can get graph.csv and weight.csv.
 This requires sample indexes like "100,200,300". This means that from the test data, this code picks up sample indexes 100, 200, and 300 and then calculates the weight of each sample.
 Concretely, we first construct a graph structure based on Gene Ontology. The data contains GO and gene information and is saved as graph.csv.
 Next, this obtains weights for each sample from the hidden layer. For example, for three samples of 100, 200, and 300, we obtain weights for 2068 nodes (GOs).
@@ -146,7 +157,7 @@ The following is a visualization using Cytoscape.
 
 When you run get_GO_importance, you can get importance_for_pos_DRUG_INDEX.csv and importance_for_neg_DRUG_INDEX.csv table.
 In addition this return below figures, first two pics are figure of top 10 PC1 score GO and bottom10 for positive drug responce score's Cell Line and others are for negative drug responce score's Cell Line.
-  
+
 This script's first step is applying PCA to all Hidden Layer values with n_compounds = 1. There are 2000 GOs and 100,000 samples, so a matrix of 100,000*2000 is generated.
 
 Next step is determining which cell line contains the drug based on the Pubchem ID. Since this data has a Drug Response value, it is divided into Positive and Negative data, depending on whether it is greater or equal to 0.
@@ -160,9 +171,9 @@ The PCA values for each GO are then averaged for Positives and Negatives. The To
 ![image](https://user-images.githubusercontent.com/8393063/183324479-ce51ecb9-d18f-4f4a-a79b-3ff918901fdb.png)
 
 ![image](https://user-images.githubusercontent.com/8393063/183324491-7d6cfb16-124f-4081-8e0c-0955b97db8e4.png)
-    
+
  </details>
-  
+
 ### 8. (Optional) Hyper parameter tuning
 
 <details>
