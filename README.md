@@ -160,6 +160,8 @@ The PCA values for each GO are then averaged for Positives and Negatives. The To
 
 <details>
 
+[notebook](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/Hyperparameter_Tuning.ipynb)
+
 ```console
 python ../DrugCell/code/hyperparameter_tuning.py
 ```
