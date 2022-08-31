@@ -65,7 +65,7 @@ python code/predict_drugcell.py -gene2id ./DrugCell/data_rcellminer/gene2ind.txt
                                 -drug2id ./DrugCell/data_rcellminer/drug2ind.txt \
                                 -genotype ./DrugCell/data_rcellminer/cell2mut.txt \
                                 -fingerprint ./DrugCell/data_rcellminer/drug2fingerprint.csv \
-                                -predict ./DrugCell/data_rcellminer/test_rcell_wo_other.txt \
+                                -predict ./DrugCell/data_rcellminer/test_DNA.txt \
                                 -hidden ./Hidden \
                                 -result ./Result \
                                 -load ./DrugCell/pretrained_model_rcellminer/model.pt
