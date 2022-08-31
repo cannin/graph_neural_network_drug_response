@@ -4,16 +4,34 @@ This is a set of scripts to get data from rcellminer, convert the data for DrugC
 
 ## Brief overview of this repository.
 
-- [ ] Get data from rcellminer
-- [ ] Preprocess for DrugCell
-- [ ] Run DrugCell
-- [ ] Get Correlation score for GO terms
-- [ ] Get Correlation score for genes
-- [ ] Evaluate each drug response
-
+1. Get data from rcellminer
+   - [notebook](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/data%20extraction%20from%20rcellminer.ipynb)
+   - [script](https://github.com/cannin/graph_neural_network_drug_response/blob/main/code/data_extraction.r)
+2. Replace Cell Line name from nci60 to CCLE
+   - [notebook](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/nci60%20to%20ccle.ipynb)
+   - [script](https://github.com/cannin/graph_neural_network_drug_response/blob/main/code/nci60_to_ccle.py)
+3. Train, Val, Test data extraction
+   - [notebook](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_data_with_class_label.ipynb)
+   - [script](https://github.com/cannin/graph_neural_network_drug_response/blob/main/code/get_data_with_class_label.py)
+4. Data extraction for running DrugCell
+   - [notebook](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_data_for_training.ipynb)
+   - [script](https://github.com/cannin/graph_neural_network_drug_response/blob/main/code/get_data_for_training.py)
+5. Run DrugCell
+   - [notebook](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/Run_DrugCell_Model_for_CellMinerCDB_Data.ipynb)
+6. Get Correlation score for GO terms
+   - [notebook](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_correlation_score.ipynb)
+7. Get Correlation score for genes
+   - [notebook](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_graph_structure_from_corr_score.ipynb)
+8. Evaluate each drug response
+   - [Camptothecin](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BCamptothecin%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
+   - [Fluorouracil](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BFluorouracil%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
+   - [Fulvestrant](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BFulvestrant%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
+   - [Methotrexate](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BMethotrexate%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
+9. (Optional) Hyperparameter tuning
+   - [notebook]()
 ---
 
-## Procedure
+## Detailed Procedure
 
 * Step 1-3 are automatically running by GitHub actions. You can use each scripts if you want to run manually.
 * You can get the artifact from [here](https://github.com/cannin/graph_neural_network_drug_response/actions/workflows/data_extraction.yml).
