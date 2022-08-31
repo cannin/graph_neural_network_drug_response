@@ -90,9 +90,16 @@ This is the implementation to get the correlation for genes.
 ![Screen Shot 2022-08-26 at 18 49 23](https://user-images.githubusercontent.com/8393063/187004837-16bd59ab-359d-4cb3-bfaf-e6d133cda365.png)
 
 Firstly from the graph structure, you can get the path from the gene to GO:0008150.  
-There are so many PATHS to get there, and this code utilizes average to define each gene's correlatio
+There are so many PATHS to get there, and this code utilizes average to define each gene's correlation.
+ 
+### 6. Visualization for each drug
+ 
+ - [Camptothecin](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BCamptothecin%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
+ - [Fluorouracil](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BFluorouracil%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
+ - [Fulvestrant](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BFulvestrant%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
+ - [Methotrexate](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BMethotrexate%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
   
-  ### 6. (Optional) PCA-based visualization with cytoscape
+  ### 7. (Optional) PCA-based visualization with cytoscape
 
   <details>
     
@@ -156,7 +163,7 @@ The PCA values for each GO are then averaged for Positives and Negatives. The To
     
  </details>
   
-### 7. (Optional) Hyper parameter tuning
+### 8. (Optional) Hyper parameter tuning
 
 <details>
 
