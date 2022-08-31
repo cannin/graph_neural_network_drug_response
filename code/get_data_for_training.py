@@ -5,9 +5,7 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 
 # read train data
-train = pd.read_csv(
-    "DrugCell/data_rcellminer/train_DNA.txt", header=None, sep="\t"
-)
+train = pd.read_csv("DrugCell/data_rcellminer/train_DNA.txt", header=None, sep="\t")
 
 # create drug to index
 pd.DataFrame(set(train[1])).reset_index().to_csv(
