@@ -40,7 +40,7 @@ This is a script that replaces the nci60 Cell Line name with the CCLE one.
 
 </details>
 
-### 3. Test data extraction
+### 3. Train, Val, Test data extraction
 
 <details>
 
