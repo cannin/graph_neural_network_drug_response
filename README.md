@@ -80,7 +80,17 @@ This is a script that replaces the nci60 Cell Line name with the CCLE one.
 
 </details>
 
-### 4. Run DrugCell model
+### 4. Data extraction for running DrugCell
+
+<details>
+
+```
+python code/get_data_for_training.py
+```
+
+</details>
+
+### 5. Run DrugCell model
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/cannin/graph_neural_network_drug_response/blob/main/notebook/Run_DrugCell_Model_for_CellMinerCDB_Data.ipynb)
 
@@ -102,7 +112,7 @@ python code/predict_drugcell.py -gene2id ./DrugCell/data_rcellminer/gene2ind.txt
 
 [DrugCell's document](https://github.com/inoue0426/DrugCell#drugcell-release-v10)
 
-### 5. Correlation-based visualization (Based on DrugCell's evaluation function, RLIPP)
+### 6. Correlation-based visualization (Based on DrugCell's evaluation function, RLIPP)
 
 - [get_correlation_score.ipynb](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_correlation_score.ipynb)
 
@@ -121,14 +131,14 @@ This is the implementation to get the correlation for genes.
 Firstly from the graph structure, you can get the path from the gene to GO:0008150.
 There are so many PATHS to get there, and this code utilizes average to define each gene's correlation.
 
-### 6. Visualization for each drug
+### 7. Visualization for each drug
 
  - [Camptothecin](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BCamptothecin%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
  - [Fluorouracil](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BFluorouracil%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
  - [Fulvestrant](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BFulvestrant%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
  - [Methotrexate](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BMethotrexate%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
 
-  ### 7. (Optional) PCA-based visualization with cytoscape
+  ### 8. (Optional) PCA-based visualization with cytoscape
 
   <details>
 
@@ -192,7 +202,7 @@ The PCA values for each GO are then averaged for Positives and Negatives. The To
 
  </details>
 
-### 8. (Optional) Hyper parameter tuning
+### 9. (Optional) Hyper parameter tuning
 
 <details>
 
