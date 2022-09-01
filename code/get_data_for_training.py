@@ -4,8 +4,10 @@ import pandas as pd
 from rdkit import Chem
 from rdkit.Chem import AllChem
 
+# read train data
 train = pd.read_csv("DrugCell/data_rcellminer/train_DNA.txt", header=None, sep="\t")
 
+# create drug to index
 pd.DataFrame(set(train[1])).reset_index().to_csv(
     "DrugCell/data_rcellminer/drug2ind.txt",
     sep="\t",
@@ -13,6 +15,7 @@ pd.DataFrame(set(train[1])).reset_index().to_csv(
     index=None,
 )
 
+# create morgan fingerprint
 mfp = np.array(
     [
         np.array(
@@ -31,6 +34,7 @@ pd.DataFrame(mfp).to_csv(
     index=None,
 )
 
+# create cell line to index
 pd.DataFrame(set(train[0])).reset_index().to_csv(
     "DrugCell/data_rcellminer/cell2ind.txt",
     header=None,
@@ -40,6 +44,7 @@ pd.DataFrame(set(train[0])).reset_index().to_csv(
 
 cell2ind = pd.read_csv("DrugCell/data/cell2ind.txt", header=None, sep="\t")
 
+# create cell line to gene
 t = pd.read_csv("DrugCell/data_rcellminer/cell2ind.txt", header=None, sep="\t")
 
 cell2mut = (
@@ -60,11 +65,13 @@ cell2mut.to_csv(
     index=None,
 )
 
+# create gene to index
 gene2ind = pd.read_csv("DrugCell/data/gene2ind.txt", header=None, sep="\t")
 gene2ind = gene2ind.loc[none_zero_cols]
 gene2ind = pd.DataFrame(list(gene2ind[1]))
 gene2ind.to_csv("DrugCell/data_rcellminer/gene2ind.txt", header=None, sep="\t")
 
+# create gene ontology
 graph = pd.read_csv("DrugCell/data/drugcell_ont.txt", header=None, sep="\t")
 gene = graph[graph[2] == "gene"]
 
