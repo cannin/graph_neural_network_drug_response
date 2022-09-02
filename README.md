@@ -27,8 +27,24 @@ This is a set of scripts to get data from rcellminer, convert the data for DrugC
    - [Fluorouracil](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BFluorouracil%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
    - [Fulvestrant](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BFulvestrant%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
    - [Methotrexate](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/%5BMethotrexate%5D%20Visualization%20of%20correlation%20for%20drug%20and%20GO%20terms.ipynb)
-9. (Optional) Hyperparameter tuning
-   - [notebook]()
+   
+9. (Optional) PCA-based visualization with cytoscape
+   - [get_pca_result](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_pca_result.ipynb)
+   - [get_graph_structure](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_graph_structure.ipynb)
+   - [get_GO_importance](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_GO_importance.ipynb)
+   
+10. (Optional) Comaparison with autokeras
+   - [notebook](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/get_autokeras.ipynb)
+   
+11. (Optional) Counting top 20 correlation of genes and GO terms for all drugs.
+   - [notebook](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/Counting%20top20%20correlation%20GO%20terms%20and%20genes.ipynb) 
+   
+12. (Optional) Classification for missing label's data
+   - [notebook](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/Classification%20for%20missing%20labels'%20data.ipynb)
+
+13. (Optional) Hyperparameter tuning
+   - [notebook](https://github.com/cannin/graph_neural_network_drug_response/blob/main/notebook/Hyperparameter_Tuning.ipynb)
+
 ---
 
 ## Detailed Procedure
