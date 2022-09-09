@@ -1,3 +1,7 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7062992.svg)](https://doi.org/10.5281/zenodo.7062992)
+
+If you make use of this code please cite the Zenodo DOI: https://doi.org/10.5281/zenodo.7062992
+
 # Pipeline from rcellminer to DrugCell.
 
 This is a set of scripts to get data from rcellminer, convert the data for DrugCell, run DrugCell, and explain the results.
