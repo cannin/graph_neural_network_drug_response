@@ -2,7 +2,7 @@
 
 ![Final Report of GSoC pptx](https://user-images.githubusercontent.com/8393063/189002570-47108926-6ed3-4b62-966e-1afe5a81ef38.jpg)
 
-![Final Report of GSoC pptx (1)](https://user-images.githubusercontent.com/8393063/189002596-6c3f736f-9f08-4ab9-b4cf-c0442cec4d90.jpg)
+![Final Report of GSoC pptx (10)](https://user-images.githubusercontent.com/8393063/189555900-283b4c5b-5c44-4c1c-b0c3-6ec5824a4598.jpg)
 
 ![Final Report of GSoC pptx (2)](https://user-images.githubusercontent.com/8393063/189002633-56aa2108-5206-4291-be19-6264b27bcf85.jpg)
 
