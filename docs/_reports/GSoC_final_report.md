@@ -4,7 +4,7 @@
 
 ![Final Report of GSoC pptx (10)](https://user-images.githubusercontent.com/8393063/189555900-283b4c5b-5c44-4c1c-b0c3-6ec5824a4598.jpg)
 
-![Final Report of GSoC pptx (2)](https://user-images.githubusercontent.com/8393063/189002633-56aa2108-5206-4291-be19-6264b27bcf85.jpg)
+![Final Report of GSoC pptx (12)](https://user-images.githubusercontent.com/8393063/189556101-079b21a8-f99a-4c00-b0b7-38a11d7908e8.jpg)
 
 ![Final Report of GSoC pptx (3)](https://user-images.githubusercontent.com/8393063/189002712-280e1378-5c29-445a-b87e-40ec503ea315.jpg)
 
@@ -18,4 +18,4 @@
 
 ![Final Report of GSoC pptx (8)](https://user-images.githubusercontent.com/8393063/189003334-5bea41d9-b80c-4e91-8805-375fcabdd107.jpg)
 
-![Final Report of GSoC pptx (9)](https://user-images.githubusercontent.com/8393063/189003507-5a492d44-38ee-498e-a1d0-a6f47496fe6d.jpg)
+![Final Report of GSoC pptx (13)](https://user-images.githubusercontent.com/8393063/189556153-948bdbf9-9e03-4695-95e7-d270c38f5fe1.jpg)
